@@ -1,0 +1,45 @@
+<style>
+  main {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+   
+	padding: 15px 30px;
+	background: rgba(0,0,0,0);
+	color: #fff;
+	text-align: center;
+	width: 300px;
+  }
+</style>
+
+<main>
+<p id="result" style="font-size:500px;"></p>
+</main>
+  
+<script>
+var target = document.getElementById("result");
+var a = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん".split("");
+
+function hiragana(){
+  target.innerText = a[Math.floor(Math.random() * a.length)];
+  strFade('fedcba9876543210');
+}
+
+var cnt = 0;
+function strFade(str) {
+  c = str.charAt(cnt++);
+  document.all["result"].style.color = "#"+c+c+c+c+c+c;
+  if(cnt < str.length) setTimeout("strFade('" + str + "')",100);
+  if(cnt == str.length) cnt = 0;
+}
+
+document.addEventListener('click', function(){
+  hiragana(); 
+}, false);
+
+document.addEventListener('DOMContentLoaded', function(){
+  hiragana(); 
+}, false);
+ 
+</script>
